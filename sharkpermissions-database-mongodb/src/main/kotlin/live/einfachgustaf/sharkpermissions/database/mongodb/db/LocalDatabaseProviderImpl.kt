@@ -5,6 +5,13 @@ import live.einfachgustaf.sharkpermissions.database.mongodb.db.player.PlayerProv
 import live.einfachgustaf.sharkpermissions.database.player.IPlayerProvider
 
 class LocalDatabaseProviderImpl: LocalDatabaseProvider() {
+    override fun startup() {
+        TODO("Not yet implemented")
+    }
+
+    override fun shutdown() {
+        TODO("Not yet implemented")
+    }
 
     override fun getPlayerProvider(): IPlayerProvider {
         return PlayerProviderImpl()

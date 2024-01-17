@@ -13,4 +13,8 @@ class PlayerProviderImpl: IPlayerProvider {
     override fun insertPlayer(player: IPermissionPlayer): IPermissionPlayer {
         TODO("Not yet implemented")
     }
+
+    override fun updatePlayer(player: IPermissionPlayer): IPermissionPlayer {
+        TODO("Not yet implemented")
+    }
 }

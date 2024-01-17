@@ -12,6 +12,9 @@ abstract class LocalDatabaseProvider {
         }
     }
 
+    abstract fun startup()
+    abstract fun shutdown()
+
     abstract fun getPlayerProvider(): IPlayerProvider
 
     init {

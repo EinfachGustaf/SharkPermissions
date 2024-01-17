@@ -5,6 +5,6 @@ import java.util.*
 
 interface IPlayerProvider {
     fun getPermissionPlayerByUUID(uuid: UUID): IPermissionPlayer
-
     fun insertPlayer(player: IPermissionPlayer): IPermissionPlayer
+    fun updatePlayer(player: IPermissionPlayer): IPermissionPlayer
 }

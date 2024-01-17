@@ -1,5 +1,7 @@
 package live.einfachgustaf.sharkpermissions.api.player
 
+import live.einfachgustaf.sharkpermissions.api.group.IPermissionGroup
+import java.time.LocalDateTime
 import java.util.UUID
 
 interface IPermissionPlayer {
@@ -9,5 +11,7 @@ interface IPermissionPlayer {
     fun addPermission(permission: String)
     fun removePermission(permission: String)
 
-    //TODO: groups
+    fun getGroups(): HashMap<IPermissionGroup, LocalDateTime>
+    fun addGroup(group: IPermissionGroup)
+    fun removeGroup(group: String)
 }
