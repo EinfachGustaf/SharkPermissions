@@ -4,7 +4,8 @@ import live.einfachgustaf.sharkpermissions.api.player.IPermissionPlayer
 import java.util.*
 
 interface IPlayerProvider {
-    fun getPermissionPlayerByUUID(uuid: UUID): IPermissionPlayer
+    fun getPermissionPlayerByUUID(uuid: UUID): IPermissionPlayer?
+    fun doesPlayerExist(uuid: UUID): Boolean
     fun insertPlayer(player: IPermissionPlayer): IPermissionPlayer
     fun updatePlayer(player: IPermissionPlayer): IPermissionPlayer
 }
