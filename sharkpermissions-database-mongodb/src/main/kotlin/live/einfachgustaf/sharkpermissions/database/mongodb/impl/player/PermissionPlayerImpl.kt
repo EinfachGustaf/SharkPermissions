@@ -8,7 +8,9 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class PermissionPlayerImpl(
-    @get:JvmName("getUuidA") val uuid: String
+    @get:JvmName("getUuidA") val uuid: String,
+    @get:JvmName("getPermissionsA") val permissions: List<String>,
+    @get:JvmName("getGroupsA") val groups: HashMap<IPermissionGroup, LocalDateTime>
 ): IPermissionPlayer {
     override fun getUUID(): UUID {
         return UUID.fromString(uuid)
