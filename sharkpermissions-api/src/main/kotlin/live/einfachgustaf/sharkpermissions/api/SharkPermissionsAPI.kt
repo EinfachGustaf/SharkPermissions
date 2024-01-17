@@ -2,14 +2,16 @@ package live.einfachgustaf.sharkpermissions.api
 
 import live.einfachgustaf.sharkpermissions.api.player.IPlayerRepository
 
-abstract class SharkPermissionsAPI() {
-
-    private lateinit var instance: SharkPermissionsAPI
+abstract class SharkPermissionsAPI {
 
     abstract fun getPlayerRepository(): IPlayerRepository
 
-    fun getInstance(): SharkPermissionsAPI {
-        return instance
+    companion object {
+        private lateinit var instance: SharkPermissionsAPI
+
+        fun getInstance(): SharkPermissionsAPI {
+            return instance
+        }
     }
 
     init {

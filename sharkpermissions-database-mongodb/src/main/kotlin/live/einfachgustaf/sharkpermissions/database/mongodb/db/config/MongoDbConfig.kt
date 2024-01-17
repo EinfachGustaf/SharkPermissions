@@ -13,12 +13,14 @@ data class MongoDbConfig(
     val password: String
 )
 
+//lateinit var dataPath: String
+
 fun getMongoDbConfig(): MongoDbConfig {
     return getJsonConfig<MongoDbConfig>(
         defaultConfig = MongoDbConfig(
             "127.0.0.1", 27017, "dinoperms", "", ""
         ),
-        filePath = "sharkpermissions/mongodb.json"
+        filePath = "config/sharkperms/mongodb.json"
     )
 }
 

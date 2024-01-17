@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.21"
+    id("io.papermc.paperweight.userdev") version "1.5.11" apply false
 }
 
 group = "live.einfachgustaf"
