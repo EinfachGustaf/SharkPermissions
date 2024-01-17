@@ -3,3 +3,5 @@ plugins {
 }
 rootProject.name = "SharkPermissions"
 include("sharkpermissions-api")
+include("sharkpermissions-database")
+include("sharkpermissions-database-mongodb")
