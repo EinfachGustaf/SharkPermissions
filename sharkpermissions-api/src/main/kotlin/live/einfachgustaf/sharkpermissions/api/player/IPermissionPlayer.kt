@@ -7,7 +7,7 @@ import java.util.UUID
 interface IPermissionPlayer {
 
     fun getUUID(): UUID
-    fun getPermissions(): List<String>
+    fun getPermissions(): ArrayList<String>
     fun addPermission(permission: String)
     fun removePermission(permission: String)
 

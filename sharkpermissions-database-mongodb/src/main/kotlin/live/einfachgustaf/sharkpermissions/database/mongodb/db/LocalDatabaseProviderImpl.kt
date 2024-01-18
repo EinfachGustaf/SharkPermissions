@@ -2,6 +2,7 @@ package live.einfachgustaf.sharkpermissions.database.mongodb.db
 
 import live.einfachgustaf.sharkpermissions.database.LocalDatabaseProvider
 import live.einfachgustaf.sharkpermissions.database.mongodb.db.player.PlayerProviderImpl
+import live.einfachgustaf.sharkpermissions.database.mongodb.impl.PermissionApiImpl
 import live.einfachgustaf.sharkpermissions.database.player.IPlayerProvider
 
 class LocalDatabaseProviderImpl(
@@ -15,6 +16,7 @@ class LocalDatabaseProviderImpl(
     override fun startup() {
         //live.einfachgustaf.sharkpermissions.database.mongodb.db.config.dataPath = dataPath
         mongoAdapter.startup()
+        PermissionApiImpl()
     }
 
     override fun shutdown() {

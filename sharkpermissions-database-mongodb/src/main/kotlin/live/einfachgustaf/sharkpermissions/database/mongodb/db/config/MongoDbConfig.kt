@@ -18,7 +18,7 @@ data class MongoDbConfig(
 fun getMongoDbConfig(): MongoDbConfig {
     return getJsonConfig<MongoDbConfig>(
         defaultConfig = MongoDbConfig(
-            "127.0.0.1", 27017, "dinoperms", "", ""
+            "127.0.0.1", 27017, "sharkpermissions", "", ""
         ),
         filePath = "config/sharkperms/mongodb.json"
     )

@@ -13,6 +13,9 @@ class PlayerProviderImpl: IPlayerProvider {
     private val playerCollection = LocalDatabaseProviderImpl.mongoAdapter.database.getCollection<PermissionPlayerImpl>("players")
 
     override fun getPermissionPlayerByUUID(uuid: UUID): IPermissionPlayer? {
+        if (!doesPlayerExist(uuid)) {
+            insertPlayer(PermissionPlayerImpl(uuid.toString(), arrayListOf(), hashMapOf()))
+        }
         return playerCollection.findOne(PermissionPlayerImpl::uuid eq uuid.toString())
     }
 
@@ -28,20 +31,35 @@ class PlayerProviderImpl: IPlayerProvider {
     }
 
     override fun updatePlayer(player: IPermissionPlayer): IPermissionPlayer {
+        if (!doesPlayerExist(player.getUUID())) {
+            insertPlayer(player)
+        }
         playerCollection.updateOne(PermissionPlayerImpl::uuid eq player.getUUID().toString(), player)
         return player
     }
 
-    override fun getPermissions(uuid: UUID): List<String>? {
+    override fun getPermissions(uuid: UUID): ArrayList<String>? {
+        if (!doesPlayerExist(uuid)) {
+            insertPlayer(PermissionPlayerImpl(uuid.toString(), arrayListOf(), hashMapOf()))
+        }
         return playerCollection.findOne(PermissionPlayerImpl::uuid eq uuid.toString())?.getPermissions()
     }
 
     override fun addPermission(uuid: UUID, permission: String) {
+        if (!doesPlayerExist(uuid)) {
+            insertPlayer(PermissionPlayerImpl(uuid.toString(), arrayListOf(), hashMapOf()))
+        }
         playerCollection.updateOne(PermissionPlayerImpl::uuid eq uuid.toString(), PermissionPlayerImpl::permissions addToSet permission)
     }
 
     override fun removePermission(uuid: UUID, permission: String) {
-        TODO("Not yet implemented")
+        if (!doesPlayerExist(uuid)) {
+            insertPlayer(PermissionPlayerImpl(uuid.toString(), arrayListOf(), hashMapOf()))
+        }
+        val permissions = getPermissions(uuid)
+        permissions?.remove(permission)
+
+        playerCollection.updateOne(PermissionPlayerImpl::uuid eq uuid.toString(), PermissionPlayerImpl::permissions setTo permissions!!)
     }
 
     override fun getGroups(uuid: UUID): HashMap<IPermissionGroup, LocalDateTime> {

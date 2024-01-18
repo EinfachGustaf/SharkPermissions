@@ -57,6 +57,14 @@ object PermsCommand {
             requiresPermission("perms.user")
             argument<String>("user", StringArgumentType.string()) {
 
+                runs {
+                    with(SharkPermissionsAPI.getInstance().getPlayerRepository().getPermissionPlayerByUUID(player.uniqueId)) {
+                        player.sendMessage(literalText {
+                            text("uuid: ${this@with?.getUUID().toString()}") {  }
+                            text("perms: ${this@with?.getPermissions().toString()}") {  }
+                        })
+                    }
+                }
 
                 literal("add") {
                     literal("group") {

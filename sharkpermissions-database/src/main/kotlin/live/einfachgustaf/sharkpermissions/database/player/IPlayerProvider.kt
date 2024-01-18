@@ -11,7 +11,7 @@ interface IPlayerProvider {
     fun insertPlayer(player: IPermissionPlayer): IPermissionPlayer
     fun updatePlayer(player: IPermissionPlayer): IPermissionPlayer
 
-    fun getPermissions(uuid: UUID): List<String>?
+    fun getPermissions(uuid: UUID): ArrayList<String>?
     fun addPermission(uuid: UUID, permission: String)
     fun removePermission(uuid: UUID, permission: String)
 
